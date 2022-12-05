@@ -1,0 +1,54 @@
+{
+  "name": "openaicodehelper",
+  "displayName": "OpenAI Code Helper",
+  "description": "Simple AI Helper to ask and help for your code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.73.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:openaicodehelper.openaicodehelper"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "openaicodehelper.openaicodehelper",
+        "title": "OpenAI Code Helper"
+      }
+    ],
+    "configuration": {
+      "title": "Open AI code helper",
+      "properties": {
+        "openaicodehelper.apikey": {
+          "type": "string",
+          "default": "",
+          "description": "Provide your Api Key for the Open AI."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.73.0",
+    "@vscode/test-electron": "^2.2.0",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "markdown-it": "^13.0.1",
+    "openai": "^3.1.0"
+  }
+}
