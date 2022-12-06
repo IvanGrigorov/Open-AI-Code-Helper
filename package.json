@@ -2,15 +2,20 @@
   "name": "openaicodehelper",
   "displayName": "OpenAI Code Helper",
   "description": "Simple AI Helper to ask and help for your code",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "IvanGrigorov",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.73.0"
   },
-  "keywords": ["ai", "openai", "programming assitant"],
+  "keywords": [
+    "ai",
+    "openai",
+    "programming assitant"
+  ],
   "categories": [
-    "Other", "Programming Languages"
+    "Other",
+    "Programming Languages"
   ],
   "activationEvents": [
     "onCommand:openaicodehelper.openaicodehelper"
