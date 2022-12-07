@@ -48,9 +48,10 @@ function search(input) {
 	const config = vscode.workspace.getConfiguration('openaicodehelper');
 	if (!validate(config)) return;
 	if (input) {
-		vscode.window.showInformationMessage("Loading result...");
+		let disposableStatusMessage = vscode.window.setStatusBarMessage("Loading result...");
+		//test.dispose()
 		const openai = generateOpenAI(config);
-		genereateResponse(input, openai);
+		genereateResponse(input, openai, disposableStatusMessage);
 	}
 }
 
@@ -70,7 +71,7 @@ function generateOpenAI(config) {
 	return openai;
 }
 
-function genereateResponse(input, openAI) {
+function genereateResponse(input, openAI, disposableStatusMessage) {
 	openAI.createCompletion({
 		model: "text-davinci-003",
 		prompt: input,
@@ -81,7 +82,11 @@ function genereateResponse(input, openAI) {
 		presence_penalty: 0,
 	}).then((response) => {
 		displayResult(response);
-	}).catch((error) => vscode.window.showErrorMessage(error.response.data.error.message));
+		disposableStatusMessage.dispose();
+	}).catch((error) => {
+		vscode.window.showErrorMessage(error.response.data.error.message);
+		disposableStatusMessage.dispose();
+	});
 }
 
 function displayResult(openAIResponse) {
