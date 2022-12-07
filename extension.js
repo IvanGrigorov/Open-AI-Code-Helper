@@ -15,23 +15,43 @@ function activate(context) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
+	let generatedHelperCommand = generateHelperCommand();
+	let generatedOnSelectionHelperCommand = generateOnSelectionHelperCommand();
+
+	context.subscriptions.push(generatedHelperCommand);
+	context.subscriptions.push(generatedOnSelectionHelperCommand);
+
+}
+
+
+function generateHelperCommand() {
 	let disposable = vscode.commands.registerCommand('openaicodehelper.openaicodehelper', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
 		vscode.window.showInputBox({
 			placeHolder: "Write your search text"
 		}).then((input) => {
-			const config = vscode.workspace.getConfiguration('openaicodehelper');
-			if (!validate(config)) return;
-			if (input) {
-				vscode.window.showInformationMessage("Loading result...");
-				const openai = generateOpenAI(config);
-				genereateResponse(input, openai);
-			}
+			search(input);
 		});
 	});
+	return disposable;
+}
 
-	context.subscriptions.push(disposable);
+function generateOnSelectionHelperCommand() {
+	let disposable = vscode.commands.registerCommand('openaicodehelper.openaisearchselection', () => {
+		const input = vscode.window.activeTextEditor.selection
+		search(vscode.window.activeTextEditor.document.getText(input));
+	});
+	return disposable;
+}
+
+
+function search(input) {
+	const config = vscode.workspace.getConfiguration('openaicodehelper');
+	if (!validate(config)) return;
+	if (input) {
+		vscode.window.showInformationMessage("Loading result...");
+		const openai = generateOpenAI(config);
+		genereateResponse(input, openai);
+	}
 }
 
 function validate(config) {

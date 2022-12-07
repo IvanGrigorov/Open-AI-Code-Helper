@@ -18,7 +18,8 @@
     "Programming Languages"
   ],
   "activationEvents": [
-    "onCommand:openaicodehelper.openaicodehelper"
+    "onCommand:openaicodehelper.openaicodehelper",
+    "onCommand:openaicodehelper.openaisearchselection"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -26,8 +27,20 @@
       {
         "command": "openaicodehelper.openaicodehelper",
         "title": "OpenAI Code Helper"
+      },
+      {
+        "command": "openaicodehelper.openaisearchselection",
+        "title": "OpenAI Code Helper Search Selection"
       }
     ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorHasSelection",
+          "command": "openaicodehelper.openaisearchselection"
+        }
+      ]
+    },
     "configuration": {
       "title": "Open AI code helper",
       "properties": {

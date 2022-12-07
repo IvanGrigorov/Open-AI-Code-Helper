@@ -5,6 +5,9 @@ Open AI account is required for an API Key
 
 ![Alt Text](https://raw.githubusercontent.com/IvanGrigorov/Open-AI-Code-Helper/master/images/open-ai-code-helper.gif)
 
+## Updates - version 0.1.0
+
+Now you can search on selected text from the context menu
 
 ## Support
 
