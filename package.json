@@ -2,7 +2,7 @@
   "name": "openaicodehelper",
   "displayName": "OpenAI Code Helper",
   "description": "Simple AI Helper to ask and help for your code",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "IvanGrigorov",
   "icon": "images/icon.png",
   "engines": {
