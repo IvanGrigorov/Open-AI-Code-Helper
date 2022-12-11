@@ -1,8 +1,8 @@
 {
   "name": "openaicodehelper",
-  "displayName": "OpenAI Code Helper",
-  "description": "Simple AI Helper to ask and help for your code",
-  "version": "0.1.2",
+  "displayName": "ChatGPT(OpenAI) Code Helper",
+  "description": "Simple Open AI Helper to ask and help for your code",
+  "version": "0.1.3",
   "publisher": "IvanGrigorov",
   "icon": "images/icon.png",
   "engines": {
